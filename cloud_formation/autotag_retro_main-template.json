@@ -52,7 +52,13 @@
         "Disabled"
       ],
       "Default": "Enabled"
+    },
+    "CustomTags": {
+      "Description": "Define custom tags in a JSON document.",
+      "Type": "String",
+      "Default": ""
     }
+
   },
 
   "Resources": {
@@ -88,6 +94,9 @@
             },
             "ROLE_NAME": {
               "Ref": "AutoTagMasterRole"
+            },
+            "CUSTOM_TAGS": {
+              "Ref": "CustomTags"
             }
           }
         }
