@@ -36,8 +36,12 @@ module AwsResource
     end
 
     def resource_name_exists?(**args)
-      (args[:response_elements]['tableDescription'] &&
-          args[:response_elements]['tableDescription']['tableArn'])
+      if args[:response_elements]['tableDescription'] && args[:response_elements]['tableDescription']['tableArn']
+        (args[:response_elements]['tableDescription'] &&
+        args[:response_elements]['tableDescription']['tableArn'])
+      else
+        dynamodb_arn_builder(args)
+      end
     end
 
     def resource_name(**args)
